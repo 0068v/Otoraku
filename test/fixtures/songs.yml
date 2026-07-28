@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  vocal: MyString
+  songwriting: MyString
+  url: MyString
+  image: 
+
+two:
+  title: MyString
+  vocal: MyString
+  songwriting: MyString
+  url: MyString
+  image: 
