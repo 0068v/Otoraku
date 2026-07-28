@@ -4,13 +4,25 @@
 
 <% @songs.each do |song| %>
   <p>
-    <%= link_to song.title, song.url %>
-    <% if song.image.present? %>
-      <%= image_tag image_song_path(song) %>
-    <% end %>
-    <%= link_to '削除', "/songs/#{song.id}", data: {turbo_method: :delete} %>
-    <%= link_to '表示', "/songs/#{song.id}" %>
-    <%= link_to '編集', "/songs/#{song.id}/edit" %>
+    <tr>
+      <td><%= song.title %></td>
+      
+      <br>
+
+      <td>
+        <% if song.image.present? %>
+          <%= image_tag image_song_path(song), width: 120 %>
+        <% end %>
+      </td>
+      
+      <td colspan="2">&nbsp;</td>
+      
+      <td>
+        <%= link_to '表示', song_path(song) %>
+        <%= link_to '編集', edit_song_path(song) %>
+        <%= link_to '削除', song, data: {turbo_method: :delete} %>
+      </td>
+    </tr>
   </p>
 <% end %>
 

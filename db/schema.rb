@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_21_120114) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_28_032323) do
   create_table "musics", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.binary "image"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_21_120114) do
   create_table "songs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.binary "image"
+    t.string "image_type"
     t.string "songwriting"
     t.string "title"
     t.datetime "updated_at", null: false

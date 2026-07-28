@@ -8,15 +8,41 @@
 <% end %>
 
 <%= form_with model: @song do |f| %>
-  <%= f.label :title, 'タイトル' %>
-  <%= f.text_field :title %>
-  <%= f.label :vocal, '歌' %>
-  <%= f.text_field :vocal %>
-  <%= f.label :songwriting, '作詞者/作曲者' %>
-  <%= f.text_field :songwriting %>
-  <%= f.label :url, 'リンク' %>
-  <%= f.text_field :url %>
-  <%= f.label :image, '画像' %>
-  <%= f.file_field :image %>
-  <%= f.submit '更新' %>
+
+<table>
+  <tr>
+    <td><%= f.label :title, 'タイトル' %></td>
+    <td><%= f.text_field :title %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :vocal, '歌' %></td>
+    <td><%= f.text_field :vocal %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :songwriting, '作詞者/作曲者' %></td>
+    <td><%= f.text_field :songwriting %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :url, 'リンク' %></td>
+    <td><%= f.text_field :url %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :image, '画像' %></td>
+    <td><%= f.file_field :image %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td><%= f.submit '更新' %></td>
+    <td></td>
+  </tr>
+</table>
+
 <% end %>
