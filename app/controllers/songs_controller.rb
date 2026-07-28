@@ -9,16 +9,21 @@ class SongsController < ApplicationController
   
   def create
     @song = Song.new(
-      title: params[:song][:title], 
-      vocal: params[:song][:vocal], 
+      title: params[:song][:title],
+      vocal: params[:song][:vocal],
       songwriting: params[:song][:songwriting],
-      url: params[:song][:url],
-      image: params[:song][:image]
+      url: params[:song][:url]
     )
+
+    if params[:song][:image].present?
+      @song.image = params[:song][:image].read
+      @song.image_type = params[:song][:image].content_type
+    end
+
     if @song.save
-        redirect_to '/'
+      redirect_to '/'
     else
-        render 'new', status: :unprocessable_content
+      render 'new', status: :unprocessable_content
     end
   end
   
@@ -38,13 +43,29 @@ class SongsController < ApplicationController
   
   def update
     song = Song.find(params[:id])
-    song.update(
-      title: params[:song][:title], 
-      vocal: params[:song][:vocal], 
-      songwriting: params[:song][:songwriting],
-      url: params[:song][:url],
-      image: params[:song][:image]
-    )
-    redirect_to '/'
+
+    song.title = params[:song][:title]
+    song.vocal = params[:song][:vocal]
+    song.songwriting = params[:song][:songwriting]
+    song.url = params[:song][:url]
+
+    if params[:song][:image].present?
+      song.image = params[:song][:image].read
+      song.image_type = params[:song][:image].content_type
+    end
+
+    if song.save
+      redirect_to '/'
+    else
+      render 'edit', status: :unprocessable_content
+    end
+  end
+  
+  def image
+    song = Song.find(params[:id])
+
+    send_data song.image,
+              type: song.image_type,
+              disposition: "inline"
   end
 end

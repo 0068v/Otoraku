@@ -15,15 +15,14 @@
 
 <p>
   <strong>リンク：</strong>
-  <%= link_to "YouTube",
-            @song.url,
-            target: "_blank",
-            rel: "noopener" %>
+  <%= @song.url %>
 </p>
 
 <p>
   <strong>画像：</strong>
-  <%= @song.image %>
+  <% if song.image.present? %>
+    <%= image_tag image_song_path(song), width: 120 %>
+  <% end %>
 </p>
 
 <%= link_to 'Back', request.referer || '/' %>
