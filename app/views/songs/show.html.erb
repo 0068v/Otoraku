@@ -1,0 +1,29 @@
+<p>
+  <strong>タイトル：</strong>
+  <%= @song.title %>
+</p>
+
+<p>
+  <strong>歌：</strong>
+  <%= @song.vocal %>
+</p>
+
+<p>
+  <strong>作詞者/作曲者：</strong>
+  <%= @song.songwriting %>
+</p>
+
+<p>
+  <strong>リンク：</strong>
+  <%= link_to "YouTube",
+            @song.url,
+            target: "_blank",
+            rel: "noopener" %>
+</p>
+
+<p>
+  <strong>画像：</strong>
+  <%= @song.image %>
+</p>
+
+<%= link_to 'Back', request.referer || '/' %>
