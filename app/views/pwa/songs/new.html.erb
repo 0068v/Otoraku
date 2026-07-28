@@ -1,0 +1,22 @@
+<% if @song.errors.any? %>
+<h3>エラーがあります。</h3>
+<ul>
+  <% @song.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_with model: @song do |f| %>
+  <%= f.label :title, 'タイトル' %>
+  <%= f.text_field :title %>
+  <%= f.label :vocal, '歌' %>
+  <%= f.text_field :vocal %>
+  <%= f.label :songwriting, '作詞者/作曲者' %>
+  <%= f.text_field :songwriting %>
+  <%= f.label :url, 'リンク' %>
+  <%= f.text_field :url %>
+  <%= f.label :image, '画像' %>
+  <%= f.file_field :image %>
+  <%= f.submit '登録' %>
+<% end %>

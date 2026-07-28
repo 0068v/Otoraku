@@ -1,0 +1,28 @@
+<p>
+  <strong>タイトル：</strong>
+  <%= @song.title %>
+</p>
+
+<p>
+  <strong>歌：</strong>
+  <%= @song.vocal %>
+</p>
+
+<p>
+  <strong>作詞者/作曲者：</strong>
+  <%= @song.songwriting %>
+</p>
+
+<p>
+  <strong>リンク：</strong>
+  <%= @song.url %>
+</p>
+
+<p>
+  <strong>画像：</strong>
+  <% if song.image.present? %>
+    <%= image_tag image_song_path(song), width: 120 %>
+  <% end %>
+</p>
+
+<%= link_to 'Back', request.referer || '/' %>

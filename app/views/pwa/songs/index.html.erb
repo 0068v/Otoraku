@@ -1,0 +1,17 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<% @songs.each do |song| %>
+  <p>
+    <%= link_to song.title, song.url %>
+    <% if song.image.present? %>
+      <%= image_tag image_song_path(song) %>
+    <% end %>
+    <%= link_to '削除', "/songs/#{song.id}", data: {turbo_method: :delete } %>
+    <%= link_to '表示', "/songs/#{song.id}" %>
+    <%= link_to '編集', "/songs/#{song.id}/edit" %>
+  </p>
+<% end %>
+
+<p><%= link_to '新規追加', '/songs/new' %></p>
